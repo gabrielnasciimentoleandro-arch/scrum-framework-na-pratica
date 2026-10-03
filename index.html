@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guia visual, interativo e autoral do Framework Scrum conforme o Scrum Guide 2020.">
+  <meta name="theme-color" content="#17152f">
+  <title>Framework Scrum na Prática</title>
+  <style>
+    :root {
+      --bg: #f4f5fb;
+      --surface: #ffffff;
+      --surface-2: #eeecfa;
+      --ink: #22263f;
+      --muted: #66708b;
+      --line: #dfe2ef;
+      --purple: #6b4eff;
+      --purple-dark: #46358d;
+      --teal: #13a085;
+      --teal-dark: #087360;
+      --coral: #f06449;
+      --gold: #d08a18;
+      --yellow: #f4c95d;
+      --navy: #17152f;
+      --shadow: 0 18px 55px rgba(30, 26, 70, .12);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    body.dark {
+      --bg: #0f1020;
+      --surface: #191a31;
+      --surface-2: #22213e;
+      --ink: #f3f3ff;
+      --muted: #b2b4d1;
+      --line: #343653;
+      --shadow: 0 20px 60px rgba(0, 0, 0, .3);
+    }
+    body.dark .kicker,
+    body.dark .source-card a { color: #aa9cff; }
+    body.dark .chip.official { color: #6fe0ca; }
+    body.dark .chip.optional { color: #f4c95d; }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      transition: background .25s, color .25s;
+    }
+    button, input { font: inherit; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      background: #fff;
+      color: #111;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 1000;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--teal), var(--coral));
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, .09);
+      background: rgba(23, 21, 47, .94);
+      color: #fff;
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 32px));
+      height: 70px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--purple), var(--teal));
+      box-shadow: 0 8px 28px rgba(107, 78, 255, .35);
+    }
+    .brand-mark svg { width: 22px; }
+    .nav { display: flex; align-items: center; gap: 4px; }
+    .nav a {
+      padding: .55rem .72rem;
+      border-radius: 10px;
+      color: #d9d8ed;
+      font-size: .85rem;
+      text-decoration: none;
+    }
+    .nav a:hover, .nav a.active { color: #fff; background: rgba(255,255,255,.09); }
+    .icon-button {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 12px;
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      cursor: pointer;
+    }
+    .menu-button { display: none; }
+
+    .hero {
+      overflow: hidden;
+      position: relative;
+      min-height: 650px;
+      display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at 90% 15%, rgba(107,78,255,.32), transparent 30%),
+        radial-gradient(circle at 84% 80%, rgba(19,160,133,.2), transparent 28%),
+        linear-gradient(135deg, #111329, #27214e);
+      color: #fff;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -140px;
+      bottom: -220px;
+      border: 70px solid rgba(240,100,73,.08);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max), calc(100% - 32px));
+      margin: auto;
+      padding: 90px 0;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 70px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: .45rem .8rem;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      color: #d7d5ee;
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+    .hero h1 {
+      max-width: 760px;
+      margin: 24px 0 18px;
+      font-size: clamp(3rem, 7vw, 5.7rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+    .hero h1 span { color: #9d8cff; }
+    .hero-copy { max-width: 670px; color: #c3c4db; font-size: clamp(1rem, 2vw, 1.18rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: .75rem 1.15rem;
+      border: 0;
+      border-radius: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button-primary { background: var(--coral); color: #fff; box-shadow: 0 12px 32px rgba(240,100,73,.3); }
+    .button-secondary { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.15); }
+    .framework-orbit { position: relative; width: min(420px, 100%); aspect-ratio: 1; margin: auto; }
+    .orbit-ring { position: absolute; inset: 8%; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; }
+    .orbit-ring:nth-child(2) { inset: 23%; border-style: dashed; border-color: rgba(157,140,255,.5); animation: spin 35s linear infinite; }
+    .orbit-center {
+      position: absolute;
+      inset: 34%;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--navy);
+      background: #fff;
+      box-shadow: 0 25px 70px rgba(0,0,0,.32);
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+    .orbit-center strong { display: block; color: var(--purple); font-size: 1.65rem; }
+    .orbit-node {
+      position: absolute;
+      width: 108px;
+      height: 108px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(8px);
+      text-align: center;
+      font-size: .76rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .orbit-node:nth-of-type(3) { left: 0; top: 38%; }
+    .orbit-node:nth-of-type(4) { right: 4%; top: 4%; background: rgba(107,78,255,.33); }
+    .orbit-node:nth-of-type(5) { right: 0; bottom: 16%; background: rgba(19,160,133,.28); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .orbit-ring:nth-child(2) { animation: none; } }
+
+    main section { scroll-margin-top: 86px; }
+    .section { padding: 94px 0; }
+    .section-alt { background: var(--surface-2); }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: auto; }
+    .section-head { max-width: 760px; margin-bottom: 38px; }
+    .kicker { color: var(--purple); font-size: .78rem; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    .section h2 { margin: 8px 0 12px; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.08; letter-spacing: -.035em; }
+    .section-head p { color: var(--muted); font-size: 1.05rem; }
+
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .pillar {
+      position: relative;
+      overflow: hidden;
+      min-height: 265px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .pillar::after { content: ""; position: absolute; width: 150px; height: 150px; right: -70px; bottom: -70px; border-radius: 50%; background: var(--accent); opacity: .12; }
+    .pillar-number { display: grid; place-items: center; width: 45px; height: 45px; border-radius: 14px; background: var(--accent); color: #fff; font-weight: 900; }
+    .pillar h3 { margin: 20px 0 8px; font-size: 1.35rem; }
+    .pillar p { color: var(--muted); }
+    .pillar small { color: var(--accent); font-weight: 800; }
+    .values { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+    .value { padding: .65rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-weight: 750; }
+
+    .framework-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .framework-column { padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+    .column-label { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .column-label span { width: 11px; height: 11px; border-radius: 4px; background: var(--accent); }
+    .column-label h3 { margin: 0; font-size: 1.25rem; }
+    .concept-card { margin-top: 10px; border: 1px solid var(--line); border-radius: 15px; background: var(--bg); }
+    .concept-card summary { list-style: none; padding: 15px 42px 15px 16px; cursor: pointer; font-weight: 800; position: relative; }
+    .concept-card summary::-webkit-details-marker { display: none; }
+    .concept-card summary::after { content: "+"; position: absolute; right: 16px; color: var(--accent); font-size: 1.3rem; }
+    .concept-card[open] summary::after { content: "–"; }
+    .concept-card p { margin: 0; padding: 0 16px 16px; color: var(--muted); font-size: .92rem; }
+    .timebox { display: inline-block; margin-top: 8px; padding: .25rem .52rem; border-radius: 8px; color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); font-size: .75rem; font-weight: 850; }
+    .pair { display: block; margin-top: 7px; color: var(--accent); font-size: .8rem; font-weight: 850; }
+
+    .sprint-board {
+      padding: 34px;
+      border-radius: 28px;
+      color: #fff;
+      background: linear-gradient(135deg, #201a45, #392d75);
+      box-shadow: var(--shadow);
+    }
+    .sprint-top { display: flex; align-items: start; justify-content: space-between; gap: 25px; }
+    .sprint-top h3 { margin: 0; font-size: 1.8rem; }
+    .goal { max-width: 670px; color: #cfcee8; }
+    .week-badge { padding: .55rem .8rem; border-radius: 999px; background: rgba(255,255,255,.1); color: #f4c95d; font-weight: 850; white-space: nowrap; }
+    .timeline { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 28px; }
+    .timeline::before { content: ""; position: absolute; left: 3%; right: 3%; top: 23px; height: 3px; background: linear-gradient(90deg, var(--coral), var(--purple), var(--teal)); }
+    .week { position: relative; z-index: 1; padding: 60px 16px 18px; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; background: rgba(255,255,255,.06); }
+    .week::before { content: attr(data-week); position: absolute; top: 6px; left: 16px; width: 34px; height: 34px; display: grid; place-items: center; border: 4px solid #2c255b; border-radius: 50%; background: var(--week-color); font-size: .82rem; font-weight: 900; }
+    .week strong { display: block; margin-bottom: 6px; }
+    .week p { margin: 0; color: #c4c3dd; font-size: .85rem; }
+    .dod { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+    .dod span { padding: .7rem .8rem; border-radius: 11px; background: rgba(255,255,255,.07); color: #deddf2; font-size: .82rem; }
+    .dod span::before { content: "✓"; margin-right: 7px; color: #6fe0ca; font-weight: 900; }
+
+    .classification { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .class-panel { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .class-panel h3 { margin-top: 0; }
+    .chip-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .chip { padding: .55rem .75rem; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); font-size: .85rem; font-weight: 720; }
+    .chip.official { border-color: color-mix(in srgb, var(--teal) 50%, var(--line)); color: var(--teal-dark); }
+    .chip.optional { border-color: color-mix(in srgb, var(--gold) 50%, var(--line)); color: var(--gold); }
+    .chip.no { border-color: color-mix(in srgb, var(--coral) 50%, var(--line)); color: var(--coral); }
+    .legend { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 22px; color: var(--muted); font-size: .85rem; }
+    .legend i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 3px; background: currentColor; }
+
+    .quiz-shell { display: grid; grid-template-columns: .72fr 1.28fr; gap: 30px; align-items: start; }
+    .quiz-intro { position: sticky; top: 100px; }
+    .quiz-intro p { color: var(--muted); }
+    .score-box { display: none; margin-top: 20px; padding: 18px; border-radius: 16px; background: var(--surface-2); }
+    .score-box.show { display: block; }
+    .score-number { font-size: 2.3rem; font-weight: 900; color: var(--purple); }
+    .question { margin-bottom: 14px; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .question h3 { margin: 0 0 14px; font-size: 1rem; }
+    .options { display: grid; gap: 8px; }
+    .option { display: flex; align-items: flex-start; gap: 10px; padding: .7rem .8rem; border: 1px solid var(--line); border-radius: 11px; cursor: pointer; }
+    .option:hover { border-color: var(--purple); }
+    .option input { margin-top: .3rem; accent-color: var(--purple); }
+    .question.correct { border-color: var(--teal); }
+    .question.wrong { border-color: var(--coral); }
+    .feedback { display: none; margin: 12px 0 0; color: var(--muted); font-size: .86rem; }
+    .question.answered .feedback { display: block; }
+    .quiz-actions { display: flex; gap: 10px; margin-top: 18px; }
+    .quiz-actions .button-secondary { color: var(--ink); border-color: var(--line); background: var(--surface); }
+
+    .sources { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .source-card { padding: 25px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .source-card strong { display: block; margin-bottom: 8px; }
+    .source-card p { color: var(--muted); }
+    .source-card a { color: var(--purple); font-weight: 750; }
+    .original-note { margin-top: 22px; padding: 20px 22px; border-left: 5px solid var(--coral); border-radius: 0 16px 16px 0; background: var(--surface); color: var(--muted); }
+
+    footer { padding: 36px 0; color: #b5b6d0; background: var(--navy); }
+    .footer-inner { width: min(var(--max), calc(100% - 32px)); margin: auto; display: flex; justify-content: space-between; gap: 20px; }
+    footer strong { color: #fff; }
+
+    @media (max-width: 960px) {
+      .nav { display: none; position: absolute; top: 68px; left: 16px; right: 16px; padding: 12px; border-radius: 16px; background: #252147; box-shadow: var(--shadow); }
+      .nav.open { display: grid; }
+      .menu-button { display: grid; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .framework-orbit { max-width: 360px; }
+      .pillars, .framework-grid { grid-template-columns: 1fr; }
+      .classification, .quiz-shell, .sources { grid-template-columns: 1fr; }
+      .quiz-intro { position: static; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .timeline::before { display: none; }
+      .dod { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .hero { min-height: auto; }
+      .hero-inner { padding: 65px 0 75px; gap: 45px; }
+      .hero h1 { font-size: 3.25rem; }
+      .framework-orbit { max-width: 290px; }
+      .orbit-node { width: 82px; height: 82px; font-size: .63rem; }
+      .section { padding: 68px 0; }
+      .timeline, .dod { grid-template-columns: 1fr; }
+      .sprint-board { padding: 24px; }
+      .sprint-top, .footer-inner { flex-direction: column; }
+      .topbar-inner { width: min(100% - 20px, var(--max)); }
+      .brand span:last-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#inicio" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h10M4 12h16M4 17h12" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </span>
+        <span>Framework Scrum</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a href="#fundamentos">Fundamentos</a>
+        <a href="#framework">Framework</a>
+        <a href="#pratica">Prática</a>
+        <a href="#classificacao">Classificação</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+      <div style="display:flex;gap:8px">
+        <button class="icon-button" id="themeButton" aria-label="Alternar tema" title="Alternar tema">◐</button>
+        <button class="icon-button menu-button" id="menuButton" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow"><i></i> Conteúdo autoral • Scrum Guide 2020</span>
+          <h1>Scrum é um sistema de <span>aprendizado.</span></h1>
+          <p class="hero-copy">Explore responsabilidades, eventos, artefatos, compromissos, pilares e valores — e veja tudo funcionando em uma Sprint realista de quatro semanas.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#framework">Explorar o framework <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="docs/GUIA_COMPLETO.md">Ler guia completo</a>
+          </div>
+        </div>
+        <div class="framework-orbit" aria-label="Scrum conecta time, eventos e artefatos para entregar valor">
+          <div class="orbit-ring"></div>
+          <div class="orbit-ring"></div>
+          <div class="orbit-node">SCRUM<br>TEAM</div>
+          <div class="orbit-node">EVENTOS</div>
+          <div class="orbit-node">ARTEFATOS</div>
+          <div class="orbit-center"><span>ENTREGAR</span><strong>VALOR</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fundamentos">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">01 • Fundamentos</span>
+          <h2>Empirismo em movimento</h2>
+          <p>Os três pilares formam um ciclo: tornar o trabalho visível, examinar evidências e ajustar rapidamente produto ou processo.</p>
+        </div>
+        <div class="pillars">
+          <article class="pillar" style="--accent:var(--purple)">
+            <span class="pillar-number">1</span>
+            <h3>Transparência</h3>
+            <p>Metas, trabalho, qualidade e impedimentos ficam compreensíveis para quem executa e para quem recebe o resultado.</p>
+            <small>VER PARA DECIDIR</small>
+          </article>
+          <article class="pillar" style="--accent:var(--teal)">
+            <span class="pillar-number">2</span>
+            <h3>Inspeção</h3>
+            <p>Progresso e artefatos são examinados com frequência para detectar problemas sem criar microgestão.</p>
+            <small>COMPARAR E APRENDER</small>
+          </article>
+          <article class="pillar" style="--accent:var(--coral)">
+            <span class="pillar-number">3</span>
+            <h3>Adaptação</h3>
+            <p>Novas evidências mudam o plano, o backlog, a qualidade ou a forma de trabalhar no momento adequado.</p>
+            <small>APRENDER E AGIR</small>
+          </article>
+        </div>
+        <div class="values" aria-label="Valores do Scrum">
+          <span class="value">Compromisso</span><span class="value">Foco</span><span class="value">Abertura</span><span class="value">Respeito</span><span class="value">Coragem</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="framework">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">02 • Estrutura mínima</span>
+          <h2>Um framework, três perspectivas</h2>
+          <p>Abra os cartões para entender propósito, responsabilidade e relação entre os elementos oficiais.</p>
+        </div>
+        <div class="framework-grid">
+          <article class="framework-column" style="--accent:var(--purple)">
+            <div class="column-label"><span></span><h3>Scrum Team</h3></div>
+            <details class="concept-card" open><summary>Product Owner</summary><p>Maximiza valor, comunica a Meta do Produto e responde pela gestão efetiva do Product Backlog.</p></details>
+            <details class="concept-card"><summary>Scrum Master</summary><p>Estabelece Scrum e promove a efetividade do time por meio de serviço, orientação e remoção de impedimentos.</p></details>
+            <details class="concept-card"><summary>Developers</summary><p>Criam o plano da Sprint, incorporam qualidade e produzem um Incremento utilizável.</p></details>
+          </article>
+
+          <article class="framework-column" style="--accent:var(--coral)">
+            <div class="column-label"><span></span><h3>Eventos</h3></div>
+            <details class="concept-card" open><summary>Sprint</summary><p>Contêiner de todos os eventos. Uma nova Sprint começa imediatamente após a anterior.<br><span class="timebox">um mês ou menos</span></p></details>
+            <details class="concept-card"><summary>Sprint Planning</summary><p>Define por que a Sprint é valiosa, o que pode ser feito e como iniciar o trabalho.<br><span class="timebox">até 8 horas</span></p></details>
+            <details class="concept-card"><summary>Daily Scrum</summary><p>Developers inspecionam progresso rumo à meta e adaptam seu plano.<br><span class="timebox">15 minutos</span></p></details>
+            <details class="concept-card"><summary>Sprint Review</summary><p>Time e stakeholders inspecionam o resultado e adaptam o futuro do produto.<br><span class="timebox">até 4 horas</span></p></details>
+            <details class="concept-card"><summary>Sprint Retrospective</summary><p>O time planeja melhorias de qualidade e efetividade.<br><span class="timebox">até 3 horas</span></p></details>
+          </article>
+
+          <article class="framework-column" style="--accent:var(--teal)">
+            <div class="column-label"><span></span><h3>Artefatos</h3></div>
+            <details class="concept-card" open><summary>Product Backlog</summary><p>Lista emergente e ordenada do necessário para melhorar o produto.<span class="pair">Compromisso: Meta do Produto</span></p></details>
+            <details class="concept-card"><summary>Sprint Backlog</summary><p>Meta, itens selecionados e plano acionável criado pelos Developers.<span class="pair">Compromisso: Meta da Sprint</span></p></details>
+            <details class="concept-card"><summary>Incremento</summary><p>Passo concreto, integrado e utilizável em direção à Meta do Produto.<span class="pair">Compromisso: Definition of Done</span></p></details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pratica">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">03 • Aplicação EcoCiclo</span>
+          <h2>Uma Sprint com propósito</h2>
+          <p>O produto fictício EcoCiclo ajuda moradores a encontrar pontos confiáveis de reciclagem. A primeira Sprint busca validar o fluxo essencial.</p>
+        </div>
+        <article class="sprint-board">
+          <div class="sprint-top">
+            <div>
+              <h3>Meta da Sprint</h3>
+              <p class="goal">Permitir que moradores encontrem um ecoponto por CEP e material aceito, consultando informações essenciais antes do deslocamento.</p>
+            </div>
+            <span class="week-badge">4 semanas</span>
+          </div>
+          <div class="timeline">
+            <div class="week" data-week="01" style="--week-color:var(--coral)"><strong>Descobrir e planejar</strong><p>Planning, fluxo com usuários, dados e arquitetura inicial.</p></div>
+            <div class="week" data-week="02" style="--week-color:var(--purple)"><strong>Construir e aprender</strong><p>Busca, filtros e adaptação diária a partir dos testes.</p></div>
+            <div class="week" data-week="03" style="--week-color:var(--teal)"><strong>Integrar e validar</strong><p>Detalhes, feedback sobre dados, qualidade e acessibilidade.</p></div>
+            <div class="week" data-week="04" style="--week-color:var(--gold)"><strong>Concluir e inspecionar</strong><p>Incremento, Review, Retrospective e próximo ciclo.</p></div>
+          </div>
+          <div class="dod" aria-label="Definition of Done resumida">
+            <span>critérios atendidos</span><span>revisão concluída</span><span>testes aprovados</span><span>acessibilidade verificada</span><span>segurança avaliada</span><span>potencialmente liberável</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="classificacao">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">04 • Classificação crítica</span>
+          <h2>Oficial, opcional ou incorreto?</h2>
+          <p>Scrum é propositalmente incompleto. Técnicas úteis podem ser combinadas com o framework, mas não devem ser apresentadas como regras.</p>
+        </div>
+        <div class="legend"><span style="color:var(--teal)"><i></i>oficial</span><span style="color:var(--gold)"><i></i>opcional ou contextual</span><span style="color:var(--coral)"><i></i>não pertence à definição</span></div>
+        <div class="classification">
+          <article class="class-panel">
+            <h3>Elementos e técnicas</h3>
+            <div class="chip-list">
+              <span class="chip official">Product Owner</span><span class="chip official">Sprint</span><span class="chip official">Incremento</span><span class="chip official">Meta da Sprint</span><span class="chip official">Definition of Done</span>
+              <span class="chip optional">Stakeholders</span><span class="chip optional">Refinamento</span><span class="chip optional">User Story</span><span class="chip optional">Story Points</span><span class="chip optional">Kanban Board</span>
+            </div>
+          </article>
+          <article class="class-panel">
+            <h3>Pegadinhas frequentes</h3>
+            <div class="chip-list">
+              <span class="chip no">Project Manager obrigatório</span><span class="chip no">Sprint 0</span><span class="chip no">Daily para o chefe</span><span class="chip no">fase final de testes</span><span class="chip no">release como evento</span><span class="chip no">Rugby como componente</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="container quiz-shell">
+        <div class="quiz-intro">
+          <span class="kicker">05 • Verifique o aprendizado</span>
+          <h2>Quiz rápido</h2>
+          <p>Oito perguntas sobre as relações que mais geram confusão. O resultado fica apenas no navegador.</p>
+          <div class="score-box" id="scoreBox" aria-live="polite">
+            <div class="score-number" id="scoreNumber">0/8</div>
+            <span id="scoreMessage"></span>
+          </div>
+        </div>
+        <div>
+          <form id="quizForm">
+            <div id="questions"></div>
+            <div class="quiz-actions">
+              <button class="button button-primary" type="submit">Conferir respostas</button>
+              <button class="button button-secondary" type="button" id="resetQuiz">Recomeçar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="fontes">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">06 • Fonte e autoria</span>
+          <h2>Norma oficial, aplicação original</h2>
+          <p>Definições foram conferidas na versão vigente do Scrum Guide. O exemplo, a redação, os diagramas e esta experiência são próprios.</p>
+        </div>
+        <div class="sources">
+          <article class="source-card"><strong>Scrum Guide — português brasileiro</strong><p>Referência para responsabilidades, eventos, artefatos, compromissos, pilares e valores.</p><a href="https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-PortugueseBR-3.0.pdf">Consultar guia ↗</a></article>
+          <article class="source-card"><strong>Guia completo do projeto</strong><p>Versão extensa com classificação, aplicação EcoCiclo, antipadrões e referências.</p><a href="docs/GUIA_COMPLETO.md">Abrir documento →</a></article>
+        </div>
+        <div class="original-note"><strong>Declaração de originalidade:</strong> este material não reproduz slides, quadro Miro ou repositórios de outros participantes. A estrutura visual e o caso prático foram desenvolvidos especificamente para esta entrega.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner"><span><strong>Framework Scrum na Prática</strong><br>Desafio DIO • 2026</span><span>Desenvolvido por 0Barone • Conteúdo autoral</span></div>
+  </footer>
+
+  <script>
+    const quizData = [
+      { q: "Qual evento contém todos os outros eventos?", a: ["Sprint Planning", "Sprint", "Sprint Review"], c: 1, e: "A Sprint é o contêiner dos demais eventos e dura um mês ou menos." },
+      { q: "Quem pode cancelar uma Sprint quando sua meta se torna obsoleta?", a: ["Scrum Master", "Developers", "Product Owner"], c: 2, e: "Somente o Product Owner possui essa autoridade." },
+      { q: "Qual compromisso pertence ao Incremento?", a: ["Meta do Produto", "Definition of Done", "Meta da Sprint"], c: 1, e: "A Definition of Done cria transparência sobre a qualidade necessária." },
+      { q: "A Daily Scrum existe principalmente para...", a: ["reportar ao gestor", "adaptar o plano rumo à Meta da Sprint", "aprovar releases"], c: 1, e: "Developers inspecionam progresso e adaptam o Sprint Backlog." },
+      { q: "Product Backlog Refinement é...", a: ["evento formal", "atividade contínua", "artefato"], c: 1, e: "Refinamento é uma atividade; não está entre os cinco eventos." },
+      { q: "Story points são obrigatórios no Scrum?", a: ["sim", "somente em Sprints mensais", "não"], c: 2, e: "Estimativas e story points são técnicas opcionais." },
+      { q: "Trabalho abaixo da Definition of Done pode integrar o Incremento?", a: ["não", "sim, se estiver quase pronto", "somente na primeira Sprint"], c: 0, e: "Sem atender à DoD, o trabalho não faz parte do Incremento." },
+      { q: "Qual sequência representa os pilares empíricos?", a: ["planejar, executar, controlar", "transparência, inspeção, adaptação", "escopo, prazo, custo"], c: 1, e: "Esses três pilares sustentam o empirismo no Scrum." }
+    ];
+
+    const questionsRoot = document.getElementById("questions");
+    function renderQuiz() {
+      questionsRoot.innerHTML = quizData.map((item, index) => `
+        <section class="question" data-question="${index}">
+          <h3>${index + 1}. ${item.q}</h3>
+          <div class="options">${item.a.map((option, optionIndex) => `
+            <label class="option"><input type="radio" name="q${index}" value="${optionIndex}"><span>${option}</span></label>
+          `).join("")}</div>
+          <p class="feedback">${item.e}</p>
+        </section>`).join("");
+    }
+    renderQuiz();
+
+    document.getElementById("quizForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      let score = 0;
+      quizData.forEach((item, index) => {
+        const card = document.querySelector(`[data-question="${index}"]`);
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correct = selected && Number(selected.value) === item.c;
+        card.classList.remove("correct", "wrong");
+        card.classList.add("answered", correct ? "correct" : "wrong");
+        if (correct) score++;
+      });
+      const box = document.getElementById("scoreBox");
+      document.getElementById("scoreNumber").textContent = `${score}/${quizData.length}`;
+      document.getElementById("scoreMessage").textContent = score >= 7 ? "Domínio sólido do framework." : score >= 5 ? "Bom resultado. Revise os cartões destacados." : "Revise o mapa e tente novamente.";
+      box.classList.add("show");
+      box.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    document.getElementById("resetQuiz").addEventListener("click", () => {
+      document.getElementById("quizForm").reset();
+      document.querySelectorAll(".question").forEach(card => card.classList.remove("correct", "wrong", "answered"));
+      document.getElementById("scoreBox").classList.remove("show");
+    });
+
+    document.getElementById("themeButton").addEventListener("click", () => document.body.classList.toggle("dark"));
+    const menuButton = document.getElementById("menuButton");
+    const nav = document.getElementById("nav");
+    menuButton.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+    });
+    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }));
+
+    const progress = document.getElementById("progress");
+    window.addEventListener("scroll", () => {
+      const available = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${available > 0 ? (window.scrollY / available) * 100 : 0}%`;
+    }, { passive: true });
+
+    const navLinks = [...document.querySelectorAll(".nav a")];
+    const sections = navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
+        }
+      });
+    }, { rootMargin: "-35% 0px -55%" });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>

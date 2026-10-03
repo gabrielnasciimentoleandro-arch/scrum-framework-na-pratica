@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa completo do Framework Scrum</title>
+  <desc id="desc">Mapa visual das responsabilidades, eventos, artefatos, compromissos, pilares e valores do Scrum.</desc>
+  <defs>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#28204f"/>
+      <stop offset="1" stop-color="#443589"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#76809a"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#111329" flood-opacity=".13"/>
+    </filter>
+  </defs>
+  <rect width="1500" height="900" rx="28" fill="#f4f5fb"/>
+  <rect width="1500" height="118" rx="28" fill="url(#head)"/>
+  <path d="M0 92h1500v26H0z" fill="url(#head)"/>
+  <g font-family="DejaVu Sans, Arial, sans-serif">
+    <text x="70" y="53" fill="#fff" font-size="30" font-weight="800">Framework Scrum — mapa completo</text>
+    <text x="70" y="84" fill="#c9c5ef" font-size="15">Um sistema mínimo para gerar valor em problemas complexos</text>
+    <g transform="translate(850 30)" fill="#fff" font-size="13" font-weight="700">
+      <rect width="170" height="38" rx="19" fill="#13a085"/><text x="85" y="24" text-anchor="middle">TRANSPARÊNCIA</text>
+      <rect x="185" width="135" height="38" rx="19" fill="#6b4eff"/><text x="252.5" y="24" text-anchor="middle">INSPEÇÃO</text>
+      <rect x="335" width="145" height="38" rx="19" fill="#f06449"/><text x="407.5" y="24" text-anchor="middle">ADAPTAÇÃO</text>
+    </g>
+
+    <g transform="translate(45 155)" filter="url(#shadow)">
+      <rect width="385" height="570" rx="22" fill="#fff" stroke="#dfe2ef"/>
+      <rect width="385" height="70" rx="22" fill="#eae7ff"/>
+      <path d="M0 48h385v22H0z" fill="#eae7ff"/>
+      <text x="28" y="43" fill="#46358d" font-size="24" font-weight="800">SCRUM TEAM</text>
+      <text x="28" y="96" fill="#68708a" font-size="14">coeso • multifuncional • autogerenciável</text>
+      <g transform="translate(24 125)">
+        <rect width="337" height="112" rx="16" fill="#f7f6ff" stroke="#cfc8ff"/>
+        <circle cx="47" cy="48" r="26" fill="#6b4eff"/><text x="47" y="56" text-anchor="middle" fill="#fff" font-size="23" font-weight="800">PO</text>
+        <text x="87" y="39" fill="#252844" font-size="19" font-weight="800">Product Owner</text>
+        <text x="87" y="65" fill="#68708a" font-size="14">maximiza o valor</text>
+        <text x="87" y="87" fill="#68708a" font-size="14">ordena o Product Backlog</text>
+      </g>
+      <g transform="translate(24 253)">
+        <rect width="337" height="112" rx="16" fill="#f3fbf9" stroke="#a9dfd4"/>
+        <circle cx="47" cy="48" r="26" fill="#13a085"/><text x="47" y="56" text-anchor="middle" fill="#fff" font-size="23" font-weight="800">SM</text>
+        <text x="87" y="39" fill="#252844" font-size="19" font-weight="800">Scrum Master</text>
+        <text x="87" y="65" fill="#68708a" font-size="14">estabelece o Scrum</text>
+        <text x="87" y="87" fill="#68708a" font-size="14">promove efetividade</text>
+      </g>
+      <g transform="translate(24 381)">
+        <rect width="337" height="112" rx="16" fill="#fff7f4" stroke="#f3c0b4"/>
+        <circle cx="47" cy="48" r="26" fill="#f06449"/><text x="47" y="56" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">D</text>
+        <text x="87" y="39" fill="#252844" font-size="19" font-weight="800">Developers</text>
+        <text x="87" y="65" fill="#68708a" font-size="14">criam o Incremento</text>
+        <text x="87" y="87" fill="#68708a" font-size="14">adaptam o plano diariamente</text>
+      </g>
+      <text x="192" y="540" text-anchor="middle" fill="#6b4eff" font-size="13" font-weight="700">normalmente 10 pessoas ou menos</text>
+    </g>
+
+    <g transform="translate(460 155)" filter="url(#shadow)">
+      <rect width="560" height="570" rx="22" fill="#fff" stroke="#dfe2ef"/>
+      <rect width="560" height="70" rx="22" fill="#fff0ec"/>
+      <path d="M0 48h560v22H0z" fill="#fff0ec"/>
+      <text x="28" y="43" fill="#b74331" font-size="24" font-weight="800">EVENTOS</text>
+      <text x="280" y="105" text-anchor="middle" fill="#68708a" font-size="14">a Sprint contém todos os demais eventos</text>
+      <circle cx="280" cy="325" r="171" fill="#f8f7ff" stroke="#6b4eff" stroke-width="14" stroke-dasharray="16 9"/>
+      <circle cx="280" cy="325" r="102" fill="#28204f"/>
+      <text x="280" y="309" text-anchor="middle" fill="#fff" font-size="25" font-weight="800">SPRINT</text>
+      <text x="280" y="341" text-anchor="middle" fill="#c9c5ef" font-size="16">um mês ou menos</text>
+      <text x="280" y="368" text-anchor="middle" fill="#f4c95d" font-size="14" font-weight="700">gera valor</text>
+      <g fill="#fff" font-size="14" font-weight="700" text-anchor="middle">
+        <rect x="178" y="130" width="204" height="52" rx="26" fill="#6b4eff"/><text x="280" y="163">SPRINT PLANNING • 8h</text>
+        <rect x="354" y="244" width="178" height="52" rx="26" fill="#13a085"/><text x="443" y="277">DAILY • 15min</text>
+        <rect x="334" y="449" width="198" height="52" rx="26" fill="#f06449"/><text x="433" y="482">SPRINT REVIEW • 4h</text>
+        <rect x="28" y="449" width="267" height="52" rx="26" fill="#d08a18"/><text x="161.5" y="482">SPRINT RETROSPECTIVE • 3h</text>
+      </g>
+      <text x="280" y="545" text-anchor="middle" fill="#68708a" font-size="13">nova Sprint começa imediatamente após a anterior</text>
+    </g>
+
+    <g transform="translate(1050 155)" filter="url(#shadow)">
+      <rect width="405" height="570" rx="22" fill="#fff" stroke="#dfe2ef"/>
+      <rect width="405" height="70" rx="22" fill="#eaf8f5"/>
+      <path d="M0 48h405v22H0z" fill="#eaf8f5"/>
+      <text x="28" y="43" fill="#087360" font-size="24" font-weight="800">ARTEFATOS</text>
+      <g transform="translate(22 105)">
+        <rect width="361" height="120" rx="16" fill="#f7f6ff" stroke="#cfc8ff"/>
+        <text x="20" y="33" fill="#46358d" font-size="18" font-weight="800">Product Backlog</text>
+        <text x="20" y="61" fill="#68708a" font-size="14">lista emergente e ordenada</text>
+        <rect x="20" y="78" width="180" height="28" rx="14" fill="#6b4eff"/>
+        <text x="110" y="97" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">META DO PRODUTO</text>
+      </g>
+      <g transform="translate(22 245)">
+        <rect width="361" height="120" rx="16" fill="#f3fbf9" stroke="#a9dfd4"/>
+        <text x="20" y="33" fill="#087360" font-size="18" font-weight="800">Sprint Backlog</text>
+        <text x="20" y="61" fill="#68708a" font-size="14">meta + itens + plano acionável</text>
+        <rect x="20" y="78" width="165" height="28" rx="14" fill="#13a085"/>
+        <text x="102.5" y="97" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">META DA SPRINT</text>
+      </g>
+      <g transform="translate(22 385)">
+        <rect width="361" height="120" rx="16" fill="#fff7f4" stroke="#f3c0b4"/>
+        <text x="20" y="33" fill="#b74331" font-size="18" font-weight="800">Incremento</text>
+        <text x="20" y="61" fill="#68708a" font-size="14">passo utilizável em direção à meta</text>
+        <rect x="20" y="78" width="190" height="28" rx="14" fill="#f06449"/>
+        <text x="115" y="97" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">DEFINITION OF DONE</text>
+      </g>
+      <text x="202" y="545" text-anchor="middle" fill="#087360" font-size="13" font-weight="700">cada artefato possui um compromisso</text>
+    </g>
+
+    <g transform="translate(110 768)">
+      <text x="640" y="0" text-anchor="middle" fill="#252844" font-size="17" font-weight="800">VALORES QUE ORIENTAM O USO DO FRAMEWORK</text>
+      <g transform="translate(160 26)" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">
+        <rect width="150" height="40" rx="20" fill="#6b4eff"/><text x="75" y="25">COMPROMISSO</text>
+        <rect x="166" width="110" height="40" rx="20" fill="#13a085"/><text x="221" y="25">FOCO</text>
+        <rect x="292" width="130" height="40" rx="20" fill="#f06449"/><text x="357" y="25">ABERTURA</text>
+        <rect x="438" width="130" height="40" rx="20" fill="#d08a18"/><text x="503" y="25">RESPEITO</text>
+        <rect x="584" width="125" height="40" rx="20" fill="#443589"/><text x="646.5" y="25">CORAGEM</text>
+        <rect x="725" width="225" height="40" rx="20" fill="#252844"/><text x="837.5" y="25">EMPIRISMO + LEAN</text>
+      </g>
+    </g>
+  </g>
+</svg>

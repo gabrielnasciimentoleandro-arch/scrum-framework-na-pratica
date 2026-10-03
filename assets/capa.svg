@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Framework Scrum na Prática</title>
+  <desc id="desc">Capa autoral roxa, verde e coral para o projeto do Framework Scrum.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111329"/>
+      <stop offset="1" stop-color="#292354"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d65ff"/>
+      <stop offset=".5" stop-color="#13a085"/>
+      <stop offset="1" stop-color="#f06449"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#090a19" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="30" fill="url(#bg)"/>
+  <circle cx="1110" cy="62" r="260" fill="#6b4eff" opacity=".13"/>
+  <circle cx="1125" cy="610" r="290" fill="#13a085" opacity=".08"/>
+  <path d="M0 510C240 430 335 625 600 535S980 430 1200 535V630H0z" fill="#0d1022" opacity=".35"/>
+  <g transform="translate(72 72)" font-family="DejaVu Sans, Arial, sans-serif">
+    <rect width="265" height="42" rx="21" fill="#13a085"/>
+    <text x="132.5" y="27" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" letter-spacing="2">DESAFIO DE PROJETO</text>
+    <text x="0" y="139" fill="#f4c95d" font-size="20" font-weight="700" letter-spacing="3">SCRUM GUIDE 2020</text>
+    <text x="0" y="223" fill="#fff" font-size="67" font-weight="800">Framework Scrum</text>
+    <text x="0" y="286" fill="#c8c7ea" font-size="42">na prática</text>
+    <rect x="0" y="325" width="560" height="5" rx="2.5" fill="#f06449"/>
+    <text x="0" y="381" fill="#b2b4d5" font-size="23">Responsabilidades • Eventos • Artefatos</text>
+    <text x="0" y="418" fill="#b2b4d5" font-size="23">Pilares • Valores • Aplicação realista</text>
+    <text x="0" y="512" fill="#7f83ad" font-size="16" letter-spacing="2">CONTEÚDO AUTORAL • DIO • 2026</text>
+  </g>
+  <g transform="translate(800 142)" filter="url(#shadow)" font-family="DejaVu Sans, Arial, sans-serif">
+    <circle cx="170" cy="170" r="155" fill="#171936" stroke="#3d3b70" stroke-width="2"/>
+    <circle cx="170" cy="170" r="116" fill="none" stroke="url(#ring)" stroke-width="38" stroke-dasharray="185 24 155 24 185 24" transform="rotate(-80 170 170)"/>
+    <circle cx="170" cy="170" r="76" fill="#f7f7ff"/>
+    <text x="170" y="160" text-anchor="middle" fill="#1e2045" font-size="16" font-weight="700" letter-spacing="2">ENTREGAR</text>
+    <text x="170" y="191" text-anchor="middle" fill="#6b4eff" font-size="28" font-weight="800">VALOR</text>
+    <g fill="#d4d5ef" font-size="12" font-weight="700">
+      <text x="170" y="-4" text-anchor="middle">TRANSPARÊNCIA</text>
+      <text x="345" y="177" text-anchor="middle" transform="rotate(90 345 177)">INSPEÇÃO</text>
+      <text x="170" y="357" text-anchor="middle">ADAPTAÇÃO</text>
+    </g>
+  </g>
+</svg>

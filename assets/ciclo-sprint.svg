@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="620" viewBox="0 0 1400 620" role="img" aria-labelledby="title desc">
+  <title id="title">Ciclo de uma Sprint de quatro semanas</title>
+  <desc id="desc">Fluxo do Product Backlog à Planning, Sprint, Review, Retrospective e próxima Sprint.</desc>
+  <defs>
+    <linearGradient id="sprint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6b4eff"/><stop offset="1" stop-color="#443589"/></linearGradient>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto"><path d="M0 0l11 5.5L0 11z" fill="#777b98"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#111329" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1400" height="620" rx="28" fill="#f5f6fb"/>
+  <g font-family="DejaVu Sans, Arial, sans-serif">
+    <text x="700" y="58" text-anchor="middle" fill="#252844" font-size="29" font-weight="800">Ciclo da Sprint — exemplo de quatro semanas</text>
+    <text x="700" y="88" text-anchor="middle" fill="#68708a" font-size="15">inspeção e adaptação em direção às metas</text>
+
+    <g transform="translate(55 175)" filter="url(#shadow)">
+      <rect width="210" height="145" rx="20" fill="#fff" stroke="#cfc8ff"/>
+      <rect width="210" height="45" rx="20" fill="#e9e5ff"/><path d="M0 25h210v20H0z" fill="#e9e5ff"/>
+      <text x="105" y="29" text-anchor="middle" fill="#46358d" font-size="15" font-weight="800">PRODUCT BACKLOG</text>
+      <text x="105" y="78" text-anchor="middle" fill="#5f6380" font-size="14">ordenado por valor</text>
+      <rect x="38" y="99" width="134" height="28" rx="14" fill="#6b4eff"/>
+      <text x="105" y="118" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">META DO PRODUTO</text>
+    </g>
+
+    <g transform="translate(310 175)" filter="url(#shadow)">
+      <rect width="210" height="145" rx="20" fill="#fff" stroke="#f3c0b4"/>
+      <circle cx="105" cy="48" r="28" fill="#f06449"/><text x="105" y="55" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">1</text>
+      <text x="105" y="91" text-anchor="middle" fill="#b74331" font-size="17" font-weight="800">SPRINT PLANNING</text>
+      <text x="105" y="117" text-anchor="middle" fill="#68708a" font-size="13">por quê • o quê • como</text>
+    </g>
+
+    <g transform="translate(565 120)" filter="url(#shadow)">
+      <rect width="360" height="255" rx="32" fill="url(#sprint)"/>
+      <text x="180" y="50" text-anchor="middle" fill="#fff" font-size="27" font-weight="800">SPRINT</text>
+      <text x="180" y="79" text-anchor="middle" fill="#d9d5ff" font-size="15">até quatro semanas no exemplo</text>
+      <rect x="50" y="101" width="260" height="62" rx="31" fill="#13a085"/>
+      <text x="180" y="127" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">DAILY SCRUM</text>
+      <text x="180" y="149" text-anchor="middle" fill="#d9fff7" font-size="13">15 minutos • adaptar o plano</text>
+      <rect x="50" y="181" width="260" height="46" rx="23" fill="#fff" opacity=".96"/>
+      <text x="180" y="210" text-anchor="middle" fill="#46358d" font-size="15" font-weight="800">INCREMENTO + DoD</text>
+    </g>
+
+    <g transform="translate(970 175)" filter="url(#shadow)">
+      <rect width="170" height="145" rx="20" fill="#fff" stroke="#a9dfd4"/>
+      <circle cx="85" cy="48" r="28" fill="#13a085"/><text x="85" y="55" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">2</text>
+      <text x="85" y="91" text-anchor="middle" fill="#087360" font-size="17" font-weight="800">REVIEW</text>
+      <text x="85" y="117" text-anchor="middle" fill="#68708a" font-size="13">resultado + futuro</text>
+    </g>
+
+    <g transform="translate(1180 175)" filter="url(#shadow)">
+      <rect width="170" height="145" rx="20" fill="#fff" stroke="#f0d6a7"/>
+      <circle cx="85" cy="48" r="28" fill="#d08a18"/><text x="85" y="55" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">3</text>
+      <text x="85" y="91" text-anchor="middle" fill="#99630e" font-size="17" font-weight="800">RETRO</text>
+      <text x="85" y="117" text-anchor="middle" fill="#68708a" font-size="13">qualidade + efetividade</text>
+    </g>
+
+    <g fill="#666b89">
+      <rect x="270" y="246" width="31" height="4" rx="2"/><path d="M309 248l-12-8v16z"/>
+      <rect x="525" y="246" width="31" height="4" rx="2"/><path d="M564 248l-12-8v16z"/>
+      <rect x="930" y="246" width="31" height="4" rx="2"/><path d="M969 248l-12-8v16z"/>
+      <rect x="1145" y="246" width="26" height="4" rx="2"/><path d="M1179 248l-12-8v16z"/>
+      <rect x="413" y="325" width="4" height="105" rx="2"/><rect x="415" y="428" width="850" height="4" rx="2"/><rect x="1263" y="325" width="4" height="105" rx="2"/>
+      <path d="M415 313l-9 14h18z"/>
+    </g>
+    <text x="840" y="468" text-anchor="middle" fill="#46358d" font-size="16" font-weight="800">PRÓXIMA SPRINT COMEÇA IMEDIATAMENTE</text>
+
+    <g transform="translate(150 520)">
+      <rect width="1100" height="54" rx="27" fill="#fff" stroke="#dfe2ef"/>
+      <text x="550" y="23" text-anchor="middle" fill="#252844" font-size="14" font-weight="700">O escopo pode ser esclarecido e renegociado com o Product Owner conforme o aprendizado</text>
+      <text x="550" y="43" text-anchor="middle" fill="#68708a" font-size="12">qualidade não diminui • Meta da Sprint protege coerência • incremento pode ser liberado antes da Review</text>
+    </g>
+  </g>
+</svg>
