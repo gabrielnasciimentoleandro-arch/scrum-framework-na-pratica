@@ -7,7 +7,8 @@
 ### Um mapa autoral, visual e aplicado do Scrum Guide 2020
 
 [![Scrum](https://img.shields.io/badge/framework-Scrum-6B4EFF)](https://scrumguides.org/)
-[![Versão](https://img.shields.io/badge/referência-2020-13A085)](docs/REFERENCIAS.md)
+[![Demo](https://img.shields.io/badge/demo-online-13A085)](https://gabrielnasciimentoleandro-arch.github.io/scrum-framework-na-pratica/)
+[![Versão](https://img.shields.io/badge/referência-2020-6B4EFF)](docs/REFERENCIAS.md)
 [![Projeto](https://img.shields.io/badge/projeto-autoral-F06449)](#originalidade)
 [![Idioma](https://img.shields.io/badge/idioma-PT--BR-24304A)](#)
 
@@ -29,7 +30,8 @@ A entrega possui três camadas:
 
 ## Entrega principal
 
-- 🌐 [Abrir o guia interativo](index.html)
+- 🌐 [Abrir o guia interativo online](https://gabrielnasciimentoleandro-arch.github.io/scrum-framework-na-pratica/)
+- 💻 [Abrir o arquivo local](index.html)
 - 📘 [Ler o guia completo](docs/GUIA_COMPLETO.md)
 - 🧩 [Ver a classificação dos cards](docs/CLASSIFICACAO_DOS_CARDS.md)
 - ♻️ [Acompanhar a aplicação prática EcoCiclo](docs/APLICACAO_PRATICA.md)
